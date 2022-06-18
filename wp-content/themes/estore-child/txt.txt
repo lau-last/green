@@ -1,0 +1,109 @@
+Pour une installation wordpress : 
+---------------------------------
+- Récupérer la dernière version de wordpress sur fr.wordpress.org
+- création d'une BDD (juste le nom)
+- et on lance l'installation en allant sur l'url du projet.
+- Suivre les étapes.
+
+
+Pour pouvoir se connecter à un site wordpress sans lien de connexion :
+----------------------------------------------------------------------
+- Se positionner à la racine du projet (url) et rajouter wp-admin ou wp-login ou login ou admin
+
+
+Pour mettre une page statique en page d'accueil : 
+-------------------------------------------------
+- Création d'une page, possibilité d'en créer une deuxième pour affecter le blog.
+- Deux possibilités :
+    - Apparence > personnaliser > Réglages de la page d'accueil 
+    - Réglages > Lecture
+
+        - Choisir "Une page statique"
+        - et affecter la page d'accueil et potentiellement le blog
+
+
+Pour faire un thème enfant :
+----------------------------
+- Choisir et activer un thème qui sera le thème parent
+- Aller dans wp-content > themes
+- Créer un dossier (le nom est libre, wordpress propose de reprendre le nom du thème parent et de rajouter -child à la fin)
+- Pour pouvoir activer le thème il faut 2 fichiers minimum :
+    - functions.php
+    - style.css 
+
+    - La déclaration du thème se fait dans le style css
+    - https://codex.wordpress.org/fr:Th%C3%A8mes_Enfant
+    - https://developer.wordpress.org/themes/advanced-topics/child-themes/
+
+    /*
+        Theme Name:   Le nom du theme (obligatoire)
+        Theme URI:    L'url de la doc du thème si elle existe
+        Description:  Une description
+        Author:       Qui
+        Author URI:   L'url du site de l'auteur s'il en a un
+        Template:     La ligne la plus importante : le nom du thème parent tel qu'il est écrit dans wp-content > themes (obligatoire)
+        Version:      1.0.0
+        License:      GNU General Public License v2 or later
+        License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+        Tags:         Des mots clés
+        Text Domain:  le nom du thème enfant
+    */
+
+    - Ensuite on copie/colle les fichiers que l'on veut modifier du thème parent dans le thème enfant afin de faire nos actions.
+
+    - Pour avoir le css du thème parent, il suffit de copier coller le code suivant dans functions.php (disponible sur le doc)
+
+    add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+    function theme_enqueue_styles() {
+        wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
+
+    }
+
+
+Pour créer une zone de widget : 
+-------------------------------
+- Dans functions.php : La déclaration de la zone / les deux lignes obligatoires sont : name et id
+    register_sidebar( array(
+        'name'          => 'Zone footer pleine largeur', 
+        'id'            => 'footer_pleine_largeur',
+        /* optionnel */
+        'description'   => 'Zone dans le footer en pleine largeur pour accueillir un menu secondaire',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title">',
+        'after_title'   => '</h3>'
+    ) );
+
+- Dans le fichier de template concerné : L'appel de cette zone :
+    <?php dynamic_sidebar('footer_pleine_largeur'); ?>
+
+- Pour faire une template générique :
+    - Prendre page.php la renommer (exemple page-pleine-largeur.php)
+    - et dans le commentaire en haut de ligne : rajouter la ligne suivante :
+    
+    Template Name: le nom de ce template
+
+    - Ensuite on peut modifier ce que l'on souhaite.
+
+
+Arborescence d'un projet wordpress : 
+------------------------------------
+- à la racine : wp-config.php contient les informations de connexion à la BDD
+
+- wp-includes/ : regroupe toute la logique (fonctionnalités) de wordpress hors administration
+- wp-admin/ : regroupe toute la logique (fonctionnalités) de wordpress de l'administration
+- wp-content/ : tout ce qui concerne notre projet (les thèmes installés, les extensions, les traductions, les uploads ...)
+
+
+Tables présentent dans la BDD lors de l'installation d'un projet wordpress : 
+----------------------------------------------------------------------------
+- wp_commentmeta et wp_comments 
+    permettent la sauvegarde des commentaires sur les publications du site.
+- wp_links 
+    était utilisé dans les anciennes versions de wordpress, toujours présent pour des raisons de compatibilité.
+- wp_options 
+    La configuration du site (le titre du site, le slogan, l'url racine ...)
+- wp_postmeta et wp_posts
+    permettent la sauvegarde des publications du site (pages, articles, menus ...). Chaque nouvelle version est enregistrée. (versionning)
+- wp_term_relationships et wp_term_taxonomy et wp_terms 
+    contiennent les informations relatives aux catégories, mots clés (tags) avec les relations liées aux pages et aux articles.

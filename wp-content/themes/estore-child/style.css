@@ -1,0 +1,185 @@
+/*
+    Theme Name:     estore-child
+    Template:       estore
+
+    Description:    Une description
+    Author:         Nom Prénom
+    Author URI:     http://www.le_site_lauteur.fr 
+    Theme URI:      http://www.le_site_de_la_code_du_theme.fr 
+    Version:        1.0
+*/
+
+/* 
+color
+*/
+body {
+    font-family: 'Montserrat', sans-serif !important;
+    font-size: 16px !important;
+}
+
+h1#site-title a,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Baloo 2', cursive !important;
+    letter-spacing: 1px !important;
+}
+
+.tg-container .my-cart-wrap {
+    color: white !important;
+}
+
+.middle-header-wrapper.clearfix {
+    background-color: rgb(30, 30, 30) !important;
+}
+
+.middle-header-wrapper.clearfix .tg-container a {
+    color: #B99F69 !important;
+}
+
+p#site-description {
+    color: white !important;
+}
+
+i.fa.fa-shopping-cart {
+    color: white !important;
+}
+
+.goldenclass {
+    background-color: #b99e6979 !important;
+    padding: 5rem !important;
+}
+
+a.button.wc-forward:hover {
+    color: #ffffff !important;
+}
+
+/* 
+header
+*/
+.page-header.clearfix {
+    display: none !important;
+}
+
+.bottom-header-wrapper.clearfix {
+    border: none !important;
+    margin-top: 15px !important;
+}
+
+.search-wrapper.search-user-block {
+    border: none !important;
+}
+
+.user-wrapper.search-user-block {
+    border: none !important;
+}
+
+/* 
+footer
+*/
+
+#my-personal-footer {
+    background-color: rgb(30, 30, 30) !important;
+}
+
+#my-personal-footer p {
+    color: white !important;
+    margin: 0 !important;
+    padding: 10px 0 0 0 !important;
+    font-size: 18px !important;
+    text-align: center !important;
+}
+
+#top-footer {
+    background-color: rgb(30, 30, 30) !important;
+}
+
+
+#bottom-footer {
+    background-color: rgb(30, 30, 30) !important;
+    color: white !important;
+}
+
+#bottom-footer .copy-right {
+    text-align: center !important;
+    margin: 0 auto !important;
+}
+
+/* 
+newsletter 
+*/
+
+.tnp.tnp-widget {
+    color: #ffffff !important;
+}
+
+.tnp-field.tnp-field-button input {
+    border: none !important;
+    background-color: #B99F69 !important;
+}
+
+/* 
+card
+*/
+.carte-produit-perso {
+    font-size: 15px !important;
+}
+
+.carte-produit-perso .attachment-woocommerce_thumbnail.size-woocommerce_thumbnail {
+    max-height: 200px !important;
+    max-width: 200px !important;
+}
+
+/* 
+marque boutique
+*/
+
+mark.count {
+    background-color: transparent !important;
+}
+
+/* 
+Produit
+*/
+#primary {
+    margin: 0 auto !important;
+    float: none !important;
+}
+
+/* 
+entete
+*/
+#header-ticker {
+    text-align: center !important;
+    padding: 0 !important;
+    margin: 0 auto !important;
+}
+
+@media screen and (min-width: 768px) {
+
+    .petite-animation-img {
+        max-width: 288px !important;
+        max-height: 288px !important;
+        transition: 0.3s;
+        transform: scale(1);
+        filter: grayscale(50%);
+    }
+
+    .petite-animation-img:hover {
+        transition: 0.5s;
+        transform: scale(1.1);
+        filter: grayscale(0%);
+    }
+
+    .petite-animation-icon {
+        transition: 0.3s;
+        transform: scale(1);
+    }
+
+    .petite-animation-icon:hover {
+        transition: 0.5s;
+        transform: scale(1.1);
+    }
+}
